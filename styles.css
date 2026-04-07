@@ -380,3 +380,64 @@
     height: auto;
     display: block;
 }
+
+/********************* Versió mòbils **********************/
+
+@media (max-width: 576px) {
+    /*1. MENÚ: El menú de dalt s'apila verticalment i es centra*/
+    .menu a {
+        float: none; /* Llevem que s'arrenglerin a la dreta */
+        display: block;
+        width: 100%; /* Ocupen tota l'amplada */
+        text-align: center;
+    }
+    /*2. CARTA: Canviem el Grid a una sola columna*/
+    .graella-unica-carta {
+        grid-template-columns: 1fr; /* Una sola columna que ocupa el 100% */
+        grid-template-areas:
+            "titol"
+            "menu1"
+            "text1"
+            "img1a"
+            "img1b"
+            "menu2"
+            "text2"
+            "img2a"
+            "img2b";
+    }
+    .banner-lateral {
+        /* Com que ara el banner lateral ("Menú 1") ocupa tota l'amplada, li donem una mica d'aire per dalt i per baix */
+        padding: 10px 0; 
+    }
+    /*3. GALERIA: Totes les fotos en una única columna*/
+    .item-galeria {
+        flex: 0 0 100%; /* Cada foto ocupa el 100% de l'ample */
+        height: 250px; /* Les fem més grans en mòbil */
+    }
+    /* 4. FORMULARI: Les dues columnes del formulari passen a ser d'una sola columna */
+    .fila-form {
+        flex-direction: column; /* Apilem els camps "Nom", "Data", etc. un a sobre de l'altre */
+        gap: 0; /* Llevem el gap perquè l'espai el donarà el margin-bottom de sota */
+    }
+    .caixa-boto {
+        /* L'esbós mostra el botó centrat en comptes d'a la dreta */
+        text-align: center;
+    }
+    .boto-reservar {
+        width: 100%; /* Fem que el botó ocupi tota l'amplada per facilitar tocar-lo al mòbil */
+    }
+    /* 5. FOOTER: Ocultem logo i centrem elements*/
+    .logo-footer {
+        display: none; 
+    }
+    .footer-simple {
+        justify-content: center;
+        flex-direction: column; /* Apilem el contacte si la pantalla és molt molt petita */
+        padding: 20px 10px;
+    }
+    .contacte-grup {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+}
