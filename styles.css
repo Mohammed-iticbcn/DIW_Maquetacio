@@ -441,3 +441,42 @@
         align-items: center;
     }
 }
+
+/********************* Versió tablets **********************/
+
+@media (max-width: 768px) {
+    /*1. PORTADA: Centrem la caixa del títol*/
+    .caixa-titol-esquerra {
+        /* Hereta el left: 10% i el transform vertical de l'ordinador */
+        width: 80%; /* 10% esquerra + 80% caixa = 10% lliure a la dreta*/
+        max-width: none; /* Llevem el topall de 400px que tenia a l'ordinador */
+        text-align: center; /* Centrem el text de dins de la caixa */
+    }
+    /*2. SOBRE NOSALTRES: Fila de sota passa a ser una sola columna*/
+    /*La segona fila l'hem d'apilar perquè no hi caben les dues coses de costat*/
+    .seccion-nosotros .fila {
+        flex-direction: column; /* Apila els elements verticalment */
+    }   
+    .caja-img {
+        /* Assegurem que la imatge tingui una alçada raonable ara que ocupa tota l'amplada */
+        min-height: 300px; 
+    }
+    /*3. CARTA: Canviem el Grid a 2 columnes en comptes de 3*/
+    .graella-unica-carta {
+        grid-template-columns: 80px 1fr; /* Mantenim un lateral esquerrà més primet i una gran columna a la dreta */
+        grid-template-areas:
+            "titol titol"
+            "menu1 text1"
+            "menu1 img1a"
+            "menu1 img1b"
+            "menu2 text2"
+            "menu2 img2a"
+            "menu2 img2b";
+    }
+    /*4. GALERIA: Ara volem 2 columnes en comptes de les 4 de l'ordinador*/
+    .item-galeria {
+        /* Fem que cada foto ocupi gairebé la meitat de la pantalla (menys el marge) */
+        flex: 0 0 calc(50% - 20px); 
+        height: 200px; /* Les fem una mica més altes perquè es vegin millor */
+    }
+}
