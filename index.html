@@ -8,23 +8,20 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     </head>
     <body>
-        <!--MENU-->
         <nav class="menu">
             <a href="#Galeria">Galeria</a>
             <a href="#Carta">Carta</a>
             <a href="#Nosaltres">Nosaltres</a>
         </nav>
         
-        <!--PORTADA-->
         <header class="capcalera">
             <img src="imatges/portada.png" alt="Imatge de fons del restaurant" class="img-fons-capcalera">
             <div class="caixa-titol-esquerra">
-                <p>Restaurant<b> els Coberts</b></p>
-                <p>Massa mare, forn de llenya i molta passió</p>
+                <p class="animacio-titol">Restaurant<b> els Coberts</b><br>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
             </div>
         </header>
 
-        <!--NOSALTRES-->
         <section class="seccion-nosotros" id="Nosaltres">
              <h2>Sobre nosaltres</h2>
             <div class="fila">
@@ -47,7 +44,6 @@
             </div>
         </section>
         
-        <!--CARTA-->
         <section class="seccion-carta" id="Carta">
             <h2>Carta</h2>
             <div class="banner-menu">
@@ -87,7 +83,7 @@
                 </div>
             </div>
         </section>
-        <!--Galeria-->
+
         <section class="seccio-galeria" id="Galeria">
             <h2>Galeria d'imatges</h2>       
             <div class="contenedor-galeria">
@@ -101,7 +97,22 @@
                 <div class="item-galeria"><img src="imatges/8.jpg" alt="Galeria 8"></div>
             </div>
         </section>
-        <!--Form-->
+
+        <section class="seccio-video" id="Video">
+            <h2>Vídeos del restaurant</h2>
+            <div class="video-container">
+                <video id="miVideo" muted>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                </video>
+                <div class="video-controls">
+                    <span class="material-symbols-outlined" onclick="playVid()"> play_circle </span>
+                    <span class="material-symbols-outlined" onclick="pauseVid()"> pause_circle </span>
+                    <span class="material-symbols-outlined" onclick="unmuteVid()"> volume_up </span>
+                    <span class="material-symbols-outlined" onclick="muteVid()"> volume_off </span>
+                </div>
+            </div>
+        </section>
+
         <section id="reserva" class="seccio-reserva">
             <h2>Reserva</h2>
             <form action="#" method="POST">
@@ -134,9 +145,9 @@
                 </div>
             </form>
         </section>              
-        <!--BOTO-->
+        
         <a href="#reserva" class="boto">Reservar</a>
-        <!--FOOTER-->
+        
         <footer class="footer-simple">
             <div class="logo-footer">
                 <img src="imatges/favicon.png" alt="Logo">
@@ -153,5 +164,34 @@
                 </div>
             </div>
         </footer>
+
+        <script>
+            // vídeo
+            var vid = document.getElementById("miVideo");
+            // Funcions de l'Exercici 4 per reproduir, pausar i controlar volum
+            function playVid() {
+                vid.play();
+            }
+            function pauseVid() {
+                vid.pause();
+            }
+            function unmuteVid() {
+                vid.muted = false;
+            }
+            function muteVid() {
+                vid.muted = true;
+            }
+            //Exercici 5: Un scroll per iniciar el vídeo automàticament
+            window.onscroll = function() {checkScroll()};
+            function checkScroll(){
+                var posicioScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                var seccioVideo = document.getElementById("Video").offsetTop;
+                var alturaFinestra = window.innerHeight;
+                // Si la posició de l'scroll es propera al video, el reproduïm
+                if (posicioScroll > (seccioVideo - alturaFinestra + 150)) {
+                    vid.play();
+                }
+            }
+        </script>
     </body>
 </html>
